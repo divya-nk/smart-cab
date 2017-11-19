@@ -62,7 +62,7 @@ class LearningAgent(Agent):
         # With the hand-engineered features, this learning process gets entirely negated.
         
         # Set 'state' as a tuple of relevant data for the agent        
-        state = (waypoint, inputs['light'], inputs['left'], inputs['right'], inputs['oncoming'] )
+        state = None
 
         return state
 
@@ -101,7 +101,7 @@ class LearningAgent(Agent):
         # Set the agent state and default action
         self.state = state
         self.next_waypoint = self.planner.next_waypoint()
-        action = 'left'
+        action = None
 
         ########### 
         ## TO DO ##
