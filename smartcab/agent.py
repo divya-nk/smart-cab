@@ -44,7 +44,7 @@ class LearningAgent(Agent):
         #self.epsilon = self.epsilon - 0.05
         #self.epsilon = 0.9**self.t         # F/F
         #self.epsilon = 1/(self.t**2)       # F/F
-        self.epsilon = math.e**(-0.04*self.t)   #A+/B
+        self.epsilon = math.e**(-0.01*self.t)   #A+/B
         #self.epsilon = math.cos(0.4*self.t)     #F/F
 
 
@@ -188,7 +188,7 @@ def run():
     #   learning   - set to True to force the driving agent to use Q-learning
     #    * epsilon - continuous value for the exploration factor, default is 1
     #    * alpha   - continuous value for the learning rate, default is 0.5
-    agent = env.create_agent(LearningAgent, epsilon=1.0, alpha=0.01)
+    agent = env.create_agent(LearningAgent, epsilon=1.0, alpha=0.03)
     
     ##############
     # Follow the driving agent
@@ -210,7 +210,7 @@ def run():
     # Flags:
     #   tolerance  - epsilon tolerance before beginning testing, default is 0.05 
     #   n_test     - discrete number of testing trials to perform, default is 0
-    sim.run(n_test=20, tolerance=0.001)
+    sim.run(n_test=20, tolerance=0.0005)
 
 
 if __name__ == '__main__':
