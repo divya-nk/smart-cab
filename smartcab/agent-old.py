@@ -40,7 +40,6 @@ class LearningAgent(Agent):
         # Update epsilon using a decay function of your choice
         # Update additional class parameters as needed
         # If 'testing' is True, set epsilon and alpha to 0
-
         if testing==True:
             self.epsilon, self.alpha = 0.0, 0.0
         else:
@@ -68,7 +67,7 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
         
-        # NOTE : you are not allowed to engineer features outside of the inputs available.
+        # NOTE : you are not allowed to engineer eatures outside of the inputs available.
         # Because the aim of this project is to teach Reinforcement Learning, we have placed 
         # constraints in order for you to learn how to adjust epsilon and alpha, and thus learn about the balance between exploration and exploitation.
         # With the hand-engineered features, this learning process gets entirely negated.
@@ -80,7 +79,7 @@ class LearningAgent(Agent):
 
 
     def get_maxQ(self, state):
-        """ The get_maxQ function is called when the agent is asked to find the
+        """ The get_max_Q function is called when the agent is asked to find the
             maximum Q-value of all actions based on the 'state' the smartcab is in. """
 
         ########### 
@@ -102,7 +101,6 @@ class LearningAgent(Agent):
         # When learning, check if the 'state' is not in the Q-table
         # If it is not, create a new dictionary for that state
         #   Then, for each action available, set the initial Q-value to 0.0
-
         if self.learning:
             if state in self.Q.keys():
                 pass
@@ -118,7 +116,7 @@ class LearningAgent(Agent):
         # Set the agent state and default action
         self.state = state
         self.next_waypoint = self.planner.next_waypoint()
-        #action = None
+        
 
         ########### 
         ## TO DO ##
@@ -127,6 +125,7 @@ class LearningAgent(Agent):
         # When learning, choose a random action with 'epsilon' probability
         # Otherwise, choose an action with the highest Q-value for the current state
         # Be sure that when choosing an action with highest Q-value that you randomly select between actions that "tie".
+
         if not self.learning:
             action = random.choice(self.valid_actions)
         else:
@@ -154,7 +153,6 @@ class LearningAgent(Agent):
         ###########
         # When learning, implement the value iteration update rule
         #   Use only the learning rate 'alpha' (do not use the discount factor 'gamma')
-
         if self.learning == True:
             #currentQ = self.Q[state][action]
             self.Q[state][action] = ((1-self.alpha)*self.Q[state][action]) + (reward*self.alpha)
@@ -209,7 +207,7 @@ def run():
     #   display      - set to False to disable the GUI if PyGame is enabled
     #   log_metrics  - set to True to log trial and simulation results to /logs
     #   optimized    - set to True to change the default log file name
-    sim = Simulator(env, update_delay= 0.01, log_metrics=True, display=True, optimized=True)
+    sim = Simulator(env, update_delay=0.05, log_metrics=True, display=True, optimized=True)
     
     ##############
     # Run the simulator
